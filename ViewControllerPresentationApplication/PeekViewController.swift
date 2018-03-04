@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import ViewControllerPresentation
 
-class PeekViewController: UIViewController {
+class PeekViewController: UIViewController, ViewControllerPeekInteractiveDismissable {
     
-
+    var interactiveTransitioning: ViewControllerPeekInteractiveDismissalController?
+    
     public override var preferredContentSize: CGSize {
         get {
             return CGSize(
@@ -24,6 +26,8 @@ class PeekViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blue
+        
+        self.interactiveTransitioning = ViewControllerPeekInteractiveDismissalController(viewController: self)
         
         let closeButton: UIButton = UIButton(type: .custom)
         closeButton.setTitle("Close", for: .normal)
@@ -40,10 +44,12 @@ class PeekViewController: UIViewController {
             action: #selector(self.closeSelected(_:)),
             for: .touchUpInside
         )
+        
     }
     
     @objc func closeSelected(_ sender: UIButton) {
         self.dismiss(animated: true, completion: .none)
     }
+
 
 }

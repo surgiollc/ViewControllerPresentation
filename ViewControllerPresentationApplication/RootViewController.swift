@@ -17,7 +17,7 @@ class RootViewController: UIViewController {
         }
     }
     
-    var peekTransitionController: UIViewControllerTransitioningDelegate = ViewControllerPeekTransitionAnimationController()
+    var peekTransitionController: ViewControllerPeekTransitionAnimationController = ViewControllerPeekTransitionAnimationController()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
