@@ -44,7 +44,6 @@ public final class ViewControllerPeekInteractiveDismissalController: UIPercentDr
         let downwardMovement: Float = fmaxf(Float(verticalMovement), 0.0)
         let downwardMovementPercent: Float = fminf(downwardMovement, 1.0)
         let progress: CGFloat = CGFloat(downwardMovementPercent)
-        print(progress)
         
         guard let viewController: UIViewController = self.viewController else { return }
         
