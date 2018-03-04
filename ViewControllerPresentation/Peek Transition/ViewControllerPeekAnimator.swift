@@ -66,11 +66,11 @@ extension ViewControllerPeekAnimator: UIViewControllerAnimatedTransitioning {
         } else {
             finalFrame = bottomFrame
         }
-        
         let animationDuration: TimeInterval = self.transitionDuration(using: transitionContext)
         let animations: () -> () = {
-            presentedViewController.view.frame = finalFrame
             
+            presentedViewController.view.frame = finalFrame
+
             var isPhoneX: Bool = false
             if #available(iOS 11.0, *) {
                 if let appDelegate: UIApplicationDelegate = UIApplication.shared.delegate,
@@ -81,12 +81,12 @@ extension ViewControllerPeekAnimator: UIViewControllerAnimatedTransitioning {
                 }
             }
             let presentingScaleFactor: CGFloat = isPhoneX ? 0.9 : 0.92
-            let scaleFactor: CGFloat = self.isPresenting ? presentingScaleFactor : 1.0
+            let scaleFactor: CGFloat = self.isPresenting || transitionContext.transitionWasCancelled ? presentingScaleFactor : 1.0
             presentingViewController.view.transform = CGAffineTransform(
                                                           scaleX: scaleFactor,
                                                           y: scaleFactor
                                                       )
-            if self.isPresenting {
+            if self.isPresenting || transitionContext.transitionWasCancelled {
                 presentingViewController.view.layer.cornerRadius = type(of: self).viewsCornerRadius
             } else {
                 presentingViewController.view.layer.cornerRadius = 0
@@ -98,7 +98,7 @@ extension ViewControllerPeekAnimator: UIViewControllerAnimatedTransitioning {
             options: .curveEaseInOut,
             animations: animations
         ) { finished in
-            transitionContext.completeTransition(finished)
+            transitionContext.completeTransition(finished && !transitionContext.transitionWasCancelled)
         }
     }
 }
