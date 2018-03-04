@@ -21,7 +21,6 @@ class RootViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         let recognizer: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap(_:)))
         self.view.addGestureRecognizer(recognizer)
     }

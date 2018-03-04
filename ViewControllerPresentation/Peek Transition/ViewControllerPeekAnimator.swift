@@ -12,7 +12,6 @@ final class ViewControllerPeekAnimator: NSObject {
     
     // MARK: - Properties
     
-    private static let backgroundYOffset: CGFloat = 20
     private static let viewsCornerRadius: CGFloat = 8
     private let isPresenting: Bool
     
@@ -23,96 +22,68 @@ final class ViewControllerPeekAnimator: NSObject {
         super.init()
     }
 }
-// MARK: - Private
-private extension ViewControllerPeekAnimator {
-    
-    func topFrames(for containerView: UIView, viewController: UIViewController, viewFrame: CGRect) -> (initial: CGRect, final: CGRect) {
-        var initialFrame: CGRect = viewFrame
-        var finalFrame: CGRect = viewFrame
-        
-        if self.isPresenting {
-            initialFrame.origin.y = viewFrame.height
-            finalFrame.origin.y = UIScreen.main.bounds.height - viewController.preferredContentSize.height
-        } else {
-            initialFrame.origin.y = UIScreen.main.bounds.height - viewController.preferredContentSize.height
-            finalFrame.origin.y = viewFrame.height
-        }
-        
-        return (initialFrame, finalFrame)
-    }
-    
-    func bottomFrames(for containerView: UIView, topViewController: UIViewController, viewFrame: CGRect) -> (initial: CGRect, final: CGRect) {
-        var initialFrame: CGRect = viewFrame
-        var finalFrame: CGRect = viewFrame
-        
-        let topViewYOrigin: CGFloat = UIScreen.main.bounds.height - topViewController.preferredContentSize.height
-        if self.isPresenting {
-            finalFrame.origin.x = type(of: self).backgroundYOffset
-            finalFrame.origin.y = topViewYOrigin - type(of: self).backgroundYOffset
-            finalFrame.size.width = viewFrame.width - (type(of: self).backgroundYOffset * 2)
-        } else {
-            initialFrame.origin.y = topViewYOrigin - type(of: self).backgroundYOffset
-            initialFrame.origin.x = type(of: self).backgroundYOffset
-            initialFrame.size.width = viewFrame.width - (type(of: self).backgroundYOffset * 2)
-            finalFrame.origin.y = 0
-            finalFrame.origin.x = 0
-        }
-        
-        return (initialFrame, finalFrame)
-    }
-    
-}
 // MARK: - UIViewControllerAnimatedTransitioning
 extension ViewControllerPeekAnimator: UIViewControllerAnimatedTransitioning {
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 2
+        return 0.3
     }
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let topViewController: UIViewController
-        let bottomViewController: UIViewController
+        let presentedViewController: UIViewController
+        let presentingViewController: UIViewController
         let containerView: UIView = transitionContext.containerView
         
         if self.isPresenting {
-            topViewController = transitionContext.viewController(forKey: .to)!
-            bottomViewController = transitionContext.viewController(forKey: .from)!
-            transitionContext.containerView.addSubview(topViewController.view)
+            presentedViewController = transitionContext.viewController(forKey: .to)!
+            presentingViewController = transitionContext.viewController(forKey: .from)!
+            containerView.addSubview(presentedViewController.view)
             
-            topViewController.view.layer.masksToBounds = true
-            topViewController.view.layer.cornerRadius = type(of: self).viewsCornerRadius
+            presentingViewController.view.layer.masksToBounds = true
+            presentedViewController.view.layer.masksToBounds = true
+            presentedViewController.view.layer.cornerRadius = type(of: self).viewsCornerRadius
         } else {
-            topViewController = transitionContext.viewController(forKey: .from)!
-            bottomViewController = transitionContext.viewController(forKey: .to)!
+            presentedViewController = transitionContext.viewController(forKey: .from)!
+            presentingViewController = transitionContext.viewController(forKey: .to)!
         }
         
-        let topInitialFrame: CGRect = transitionContext.finalFrame(for: topViewController)
-        let bottomInitialFrame: CGRect = transitionContext.finalFrame(for: bottomViewController)
+        var finalFrame: CGRect = transitionContext.finalFrame(for: presentedViewController)
+        let bottomFrame: CGRect = CGRect(
+            x: 0,
+            y: UIScreen.main.bounds.height,
+            width: finalFrame.size.width,
+            height: finalFrame.size.height
+        )
         
-        let topFrames: (initial: CGRect, final: CGRect) = self.topFrames(
-                                                              for: containerView,
-                                                              viewController: topViewController,
-                                                              viewFrame: topInitialFrame
-                                                          )
-        let bottomFrames: (initial: CGRect, final: CGRect) = self.bottomFrames(
-                                                                 for: containerView,
-                                                                 topViewController: topViewController,
-                                                                 viewFrame: bottomInitialFrame
-                                                             )
-        
-        topViewController.view.frame = topFrames.initial
-        bottomViewController.view.frame = bottomFrames.initial
+        if self.isPresenting {
+            presentedViewController.view.frame = bottomFrame
+        } else {
+            finalFrame = bottomFrame
+        }
         
         let animationDuration: TimeInterval = self.transitionDuration(using: transitionContext)
         let animations: () -> () = {
-            topViewController.view.frame = topFrames.final
-            bottomViewController.view.frame = bottomFrames.final
+            presentedViewController.view.frame = finalFrame
+            
+            var isPhoneX: Bool = false
+            if #available(iOS 11.0, *) {
+                if let appDelegate: UIApplicationDelegate = UIApplication.shared.delegate,
+                    let mainWindow: UIWindow? = appDelegate.window,
+                    let insets: UIEdgeInsets = mainWindow?.safeAreaInsets,
+                    insets.top > 0 {
+                    isPhoneX = true
+                }
+            }
+            let presentingScaleFactor: CGFloat = isPhoneX ? 0.9 : 0.92
+            let scaleFactor: CGFloat = self.isPresenting ? presentingScaleFactor : 1.0
+            presentingViewController.view.transform = CGAffineTransform(
+                                                          scaleX: scaleFactor,
+                                                          y: scaleFactor
+                                                      )
             if self.isPresenting {
-                bottomViewController.view.layer.masksToBounds = true
-                bottomViewController.view.layer.cornerRadius = type(of: self).viewsCornerRadius
+                presentingViewController.view.layer.cornerRadius = type(of: self).viewsCornerRadius
             } else {
-                bottomViewController.view.layer.masksToBounds = false
-                bottomViewController.view.layer.cornerRadius = 0
+                presentingViewController.view.layer.cornerRadius = 0
             }
         }
         UIView.animate(
