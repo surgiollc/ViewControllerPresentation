@@ -32,7 +32,7 @@ final class ViewControllerPushAnimator: NSObject {
 extension ViewControllerPushAnimator: UIViewControllerAnimatedTransitioning {
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 2
     }
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -50,14 +50,14 @@ extension ViewControllerPushAnimator: UIViewControllerAnimatedTransitioning {
             let fromViewController: UIViewController = transitionContext.viewController(forKey: .from)!
             viewController.view.frame = CGRect(
                 x: fromViewController.view.bounds.width,
-                y: 0,
+                y: fromViewController.view.frame.origin.y,
                 width: finalFrame.size.width,
                 height: finalFrame.size.height
             )
         } else {
             finalFrame = CGRect(
                 x: viewController.view.bounds.width,
-                y: 0,
+                y: viewController.view.frame.origin.y,
                 width: finalFrame.size.width,
                 height: finalFrame.size.height
             )
