@@ -65,7 +65,7 @@ extension ViewControllerPushAnimator: UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             viewController.view.frame = finalFrame
         }) { finished in
-            transitionContext.completeTransition(finished)
+            transitionContext.completeTransition(finished && !transitionContext.transitionWasCancelled)
         }
     }
 }
