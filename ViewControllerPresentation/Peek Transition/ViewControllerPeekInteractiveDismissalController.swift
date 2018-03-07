@@ -11,6 +11,8 @@ import UIKit
 public protocol ViewControllerPeekInteractiveDismissable {
     
     var interactiveTransitioning: ViewControllerPeekInteractiveDismissalController? { get }
+    func swipeDidBegin()
+    func swipeDidEnd()
 }
 
 public final class ViewControllerPeekInteractiveDismissalController: UIPercentDrivenInteractiveTransition {
@@ -20,9 +22,9 @@ public final class ViewControllerPeekInteractiveDismissalController: UIPercentDr
     public private(set) var interactionInProgress = false
     
     private var shouldCompleteTransition = false
-    private weak var viewController: UIViewController!
+    private weak var viewController: (UIViewController & ViewControllerPeekInteractiveDismissable)!
     
-    public init(viewController: UIViewController) {
+    public init(viewController: UIViewController & ViewControllerPeekInteractiveDismissable) {
         super.init()
         self.viewController = viewController
         self.prepareGestureRecognizer(in: self.viewController.view)
@@ -45,10 +47,11 @@ public final class ViewControllerPeekInteractiveDismissalController: UIPercentDr
         let downwardMovementPercent: Float = fminf(downwardMovement, 1.0)
         let progress: CGFloat = CGFloat(downwardMovementPercent)
         
-        guard let viewController: UIViewController = self.viewController else { return }
+        guard let viewController: UIViewController & ViewControllerPeekInteractiveDismissable = self.viewController else { return }
         
         switch recognizer.state {
         case .began:
+            viewController.swipeDidBegin()
             self.interactionInProgress = true
             viewController.dismiss(animated: true, completion: .none)
         case .changed:
@@ -58,6 +61,7 @@ public final class ViewControllerPeekInteractiveDismissalController: UIPercentDr
             self.interactionInProgress = false
             self.cancel()
         case .ended:
+            viewController.swipeDidEnd()
             self.interactionInProgress = false
             self.shouldCompleteTransition
                 ? self.finish()

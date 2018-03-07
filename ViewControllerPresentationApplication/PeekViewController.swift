@@ -13,6 +13,13 @@ class PeekViewController: UIViewController, ViewControllerPeekInteractiveDismiss
     
     var interactiveTransitioning: ViewControllerPeekInteractiveDismissalController?
     
+    func swipeDidBegin() {
+        print("swipe began")
+    }
+    func swipeDidEnd() {
+        print("swipe ended")
+    }
+    
     public override var preferredContentSize: CGSize {
         get {
             return CGSize(

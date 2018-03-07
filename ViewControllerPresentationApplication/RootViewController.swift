@@ -56,9 +56,9 @@ class RootViewController: UIViewController {
     }
     
     @objc func didTap(_ sender: UITapGestureRecognizer) {
-//        self.peekNewViewController(animated: true)
+        self.peekNewViewController(animated: true)
 //        self.pushNewViewController(animated: true)
-        self.presentModalViewController(animated: true)
+//        self.presentModalViewController(animated: true)
     }
     
     public func didTapContainer() {
