@@ -17,12 +17,11 @@ public protocol ViewControllerPresentable {
 
 extension UIViewController: ViewControllerPresentable {
     
-    public var customBackgroundView: UIView? {
+    open var customBackgroundView: UIView? {
         return .none
     }
     
-    public var backgroundColor: UIColor? {
+    open var backgroundColor: UIColor? {
         return UIColor.black.withAlphaComponent(0.2)
     }
-
 }
