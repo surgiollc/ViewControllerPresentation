@@ -19,6 +19,7 @@ class RootViewController: UIViewController {
     
     var peekTransitionController: ViewControllerPeekTransitionAnimationController = ViewControllerPeekTransitionAnimationController()
     var pushTransitionController: ViewControllerPushTransitionController = ViewControllerPushTransitionController()
+    var modalTransitionController: ViewControllerModalTransitionController = ViewControllerModalTransitionController()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +48,17 @@ class RootViewController: UIViewController {
         self.present(vc, animated: animated, completion: completion)
     }
     
+    public func presentModalViewController(animated: Bool, completion: (() -> ())? = nil) {
+        let vc = ModalViewController()
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self.modalTransitionController
+        self.present(vc, animated: true, completion: completion)
+    }
+    
     @objc func didTap(_ sender: UITapGestureRecognizer) {
 //        self.peekNewViewController(animated: true)
-        self.pushNewViewController(animated: true)
+//        self.pushNewViewController(animated: true)
+        self.presentModalViewController(animated: true)
     }
     
     public func didTapContainer() {

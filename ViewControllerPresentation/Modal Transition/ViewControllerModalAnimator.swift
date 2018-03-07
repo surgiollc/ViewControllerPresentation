@@ -1,35 +1,29 @@
 //
-//  ViewControllerPushAnimator.swift
+//  ViewControllerModalAnimator.swift
 //  ViewControllerPresentation
 //
-//  Created by Chandler De Angelis on 3/5/18.
+//  Created by Chandler De Angelis on 3/6/18.
 //  Copyright © 2018 Chandlerdea. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-final class ViewControllerPushAnimator: NSObject {
-
+final class ViewControllerModalAnimator: NSObject {
+    
     // MARK: - Init
     
     private let isPresenting: Bool
-    internal let interactiveDismissalController: ViewControllerPushInteractiveDismissalController?
-
+    
     // MARK: - Init
     
-    public convenience init(isPresenting: Bool) {
-        self.init(isPresenting: isPresenting, interactiveDismissalController: .none)
-    }
-    
-    public init(isPresenting: Bool, interactiveDismissalController: ViewControllerPushInteractiveDismissalController?) {
+    public init(isPresenting: Bool) {
         self.isPresenting = isPresenting
-        self.interactiveDismissalController = interactiveDismissalController
         super.init()
     }
 }
 
 // MARK: - UIViewControllerAnimatedTransitioning
-extension ViewControllerPushAnimator: UIViewControllerAnimatedTransitioning {
+extension ViewControllerModalAnimator: UIViewControllerAnimatedTransitioning {
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
@@ -49,15 +43,15 @@ extension ViewControllerPushAnimator: UIViewControllerAnimatedTransitioning {
         if self.isPresenting {
             let fromViewController: UIViewController = transitionContext.viewController(forKey: .from)!
             viewController.view.frame = CGRect(
-                x: fromViewController.view.bounds.width,
-                y: fromViewController.view.frame.origin.y,
+                x: 0,
+                y: fromViewController.view.bounds.height,
                 width: finalFrame.size.width,
                 height: finalFrame.size.height
             )
         } else {
             finalFrame = CGRect(
-                x: viewController.view.bounds.width,
-                y: viewController.view.frame.origin.y,
+                x: 0,
+                y: viewController.view.bounds.height,
                 width: finalFrame.size.width,
                 height: finalFrame.size.height
             )

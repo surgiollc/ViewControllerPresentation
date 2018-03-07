@@ -11,6 +11,9 @@
 		36380AA6204E1F8800083EE9 /* ViewControllerPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36380AA5204E1F8800083EE9 /* ViewControllerPushAnimator.swift */; };
 		36380AA8204E222100083EE9 /* PushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36380AA7204E222100083EE9 /* PushViewController.swift */; };
 		36380AAA204E257F00083EE9 /* ViewControllerPushInteractiveDismissalControllerr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36380AA9204E257F00083EE9 /* ViewControllerPushInteractiveDismissalControllerr.swift */; };
+		36380ABA204F99CD00083EE9 /* ViewControllerModalTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36380AB9204F99CD00083EE9 /* ViewControllerModalTransitionController.swift */; };
+		36380ABC204F99E400083EE9 /* ViewControllerModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36380ABB204F99E400083EE9 /* ViewControllerModalAnimator.swift */; };
+		36380ABE204FA05A00083EE9 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36380ABD204FA05A00083EE9 /* ModalViewController.swift */; };
 		3646E49B1FDA0FBC0013AD55 /* ViewControllerOverlayTransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646E49A1FDA0FBC0013AD55 /* ViewControllerOverlayTransitionAnimationController.swift */; };
 		3646E49D1FDA0FCF0013AD55 /* ViewControllerOverlayTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646E49C1FDA0FCF0013AD55 /* ViewControllerOverlayTransitionPresentationController.swift */; };
 		3646E4A11FDA135C0013AD55 /* ViewControllerOverlayPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646E4A01FDA135C0013AD55 /* ViewControllerOverlayPresentationTests.swift */; };
@@ -77,6 +80,9 @@
 		36380AA5204E1F8800083EE9 /* ViewControllerPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPushAnimator.swift; sourceTree = "<group>"; };
 		36380AA7204E222100083EE9 /* PushViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushViewController.swift; sourceTree = "<group>"; };
 		36380AA9204E257F00083EE9 /* ViewControllerPushInteractiveDismissalControllerr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPushInteractiveDismissalControllerr.swift; sourceTree = "<group>"; };
+		36380AB9204F99CD00083EE9 /* ViewControllerModalTransitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerModalTransitionController.swift; sourceTree = "<group>"; };
+		36380ABB204F99E400083EE9 /* ViewControllerModalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerModalAnimator.swift; sourceTree = "<group>"; };
+		36380ABD204FA05A00083EE9 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		3646E49A1FDA0FBC0013AD55 /* ViewControllerOverlayTransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOverlayTransitionAnimationController.swift; sourceTree = "<group>"; };
 		3646E49C1FDA0FCF0013AD55 /* ViewControllerOverlayTransitionPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOverlayTransitionPresentationController.swift; sourceTree = "<group>"; };
 		3646E4A01FDA135C0013AD55 /* ViewControllerOverlayPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOverlayPresentationTests.swift; sourceTree = "<group>"; };
@@ -147,6 +153,15 @@
 			path = "Push Transition";
 			sourceTree = "<group>";
 		};
+		36380AB8204E39CE00083EE9 /* Modal Transition */ = {
+			isa = PBXGroup;
+			children = (
+				36380AB9204F99CD00083EE9 /* ViewControllerModalTransitionController.swift */,
+				36380ABB204F99E400083EE9 /* ViewControllerModalAnimator.swift */,
+			);
+			path = "Modal Transition";
+			sourceTree = "<group>";
+		};
 		36BB65071FD9DFDD00D121A1 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +187,7 @@
 			children = (
 				36FA97B0204B81D700963D0E /* Protocols */,
 				36FA97A9204B7F4200963D0E /* Default Transition */,
+				36380AB8204E39CE00083EE9 /* Modal Transition */,
 				36380AA2204E1EE100083EE9 /* Push Transition */,
 				36FA97AA204B7F5000963D0E /* Overlay Transition */,
 				36FA97AB204B7F5600963D0E /* Peek Transition */,
@@ -187,6 +203,7 @@
 				36BB65261FD9E04C00D121A1 /* AppDelegate.swift */,
 				36FA97B5204B8A4100963D0E /* PeekViewController.swift */,
 				36380AA7204E222100083EE9 /* PushViewController.swift */,
+				36380ABD204FA05A00083EE9 /* ModalViewController.swift */,
 				36BB65441FD9E0B800D121A1 /* PresentedViewController.swift */,
 				36BB65281FD9E04C00D121A1 /* RootViewController.swift */,
 				36BB652A1FD9E04C00D121A1 /* Main.storyboard */,
@@ -401,6 +418,7 @@
 				36FA97E0204BB50D00963D0E /* ViewControllerPeekInteractiveDismissalController.swift in Sources */,
 				365BF2A11FDA0F3C0083FBBB /* ViewControllerTransitionPresentationDelegate.swift in Sources */,
 				36380AA6204E1F8800083EE9 /* ViewControllerPushAnimator.swift in Sources */,
+				36380ABA204F99CD00083EE9 /* ViewControllerModalTransitionController.swift in Sources */,
 				36FA97B8204B8B9C00963D0E /* ViewControllerPeekTransitionPresentationController.swift in Sources */,
 				36380AA4204E1F6600083EE9 /* ViewControllerPushTransitionController.swift in Sources */,
 				36BB651F1FD9E01800D121A1 /* ViewControllerDefaultTransitionAnimationController.swift in Sources */,
@@ -411,6 +429,7 @@
 				3646E49B1FDA0FBC0013AD55 /* ViewControllerOverlayTransitionAnimationController.swift in Sources */,
 				368368E01FDA23AF007EF38E /* ViewControllerOverlayAnimator.swift in Sources */,
 				36FA97AD204B7FC300963D0E /* ViewControllerPeekTransitionAnimationController.swift in Sources */,
+				36380ABC204F99E400083EE9 /* ViewControllerModalAnimator.swift in Sources */,
 				36FA97B4204B85C400963D0E /* ViewControllerPeekAnimator.swift in Sources */,
 				368368DE1FDA20CE007EF38E /* ViewControllerOverlay.swift in Sources */,
 			);
@@ -424,6 +443,7 @@
 				36BB65271FD9E04C00D121A1 /* AppDelegate.swift in Sources */,
 				36BB65451FD9E0B800D121A1 /* PresentedViewController.swift in Sources */,
 				36380AA8204E222100083EE9 /* PushViewController.swift in Sources */,
+				36380ABE204FA05A00083EE9 /* ModalViewController.swift in Sources */,
 				36FA97B6204B8A4100963D0E /* PeekViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
