@@ -24,7 +24,7 @@ class PeekViewController: UIViewController, ViewControllerPeekInteractiveDismiss
         get {
             return CGSize(
                 width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height - 60
+                height: UIScreen.main.bounds.height - 52
             )
         }
         set {}
