@@ -32,7 +32,7 @@ final class ViewControllerPeekAnimator: NSObject {
 extension ViewControllerPeekAnimator: UIViewControllerAnimatedTransitioning {
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 0.35
     }
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
