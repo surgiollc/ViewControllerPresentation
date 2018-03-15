@@ -35,7 +35,7 @@
 		36BB652E1FD9E04C00D121A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BB652D1FD9E04C00D121A1 /* Assets.xcassets */; };
 		36BB65311FD9E04C00D121A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB652F1FD9E04C00D121A1 /* LaunchScreen.storyboard */; };
 		36BB653C1FD9E04C00D121A1 /* ViewControllerPresentationApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB653B1FD9E04C00D121A1 /* ViewControllerPresentationApplicationTests.swift */; };
-		36BB65451FD9E0B800D121A1 /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB65441FD9E0B800D121A1 /* PresentedViewController.swift */; };
+		36BB65451FD9E0B800D121A1 /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB65441FD9E0B800D121A1 /* OverlayViewController.swift */; };
 		36FA97AD204B7FC300963D0E /* ViewControllerPeekTransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FA97AC204B7FC300963D0E /* ViewControllerPeekTransitionAnimationController.swift */; };
 		36FA97B2204B81EE00963D0E /* ViewControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FA97B1204B81EE00963D0E /* ViewControllerPresentable.swift */; };
 		36FA97B4204B85C400963D0E /* ViewControllerPeekAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FA97B3204B85C400963D0E /* ViewControllerPeekAnimator.swift */; };
@@ -108,7 +108,7 @@
 		36BB65371FD9E04C00D121A1 /* ViewControllerPresentationApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerPresentationApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BB653B1FD9E04C00D121A1 /* ViewControllerPresentationApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresentationApplicationTests.swift; sourceTree = "<group>"; };
 		36BB653D1FD9E04C00D121A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		36BB65441FD9E0B800D121A1 /* PresentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentedViewController.swift; sourceTree = "<group>"; };
+		36BB65441FD9E0B800D121A1 /* OverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		36FA97AC204B7FC300963D0E /* ViewControllerPeekTransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPeekTransitionAnimationController.swift; sourceTree = "<group>"; };
 		36FA97B1204B81EE00963D0E /* ViewControllerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresentable.swift; sourceTree = "<group>"; };
 		36FA97B3204B85C400963D0E /* ViewControllerPeekAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPeekAnimator.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 				36FA97B5204B8A4100963D0E /* PeekViewController.swift */,
 				36380AA7204E222100083EE9 /* PushViewController.swift */,
 				36380ABD204FA05A00083EE9 /* ModalViewController.swift */,
-				36BB65441FD9E0B800D121A1 /* PresentedViewController.swift */,
+				36BB65441FD9E0B800D121A1 /* OverlayViewController.swift */,
 				36BB65281FD9E04C00D121A1 /* RootViewController.swift */,
 				36BB652A1FD9E04C00D121A1 /* Main.storyboard */,
 				36BB652D1FD9E04C00D121A1 /* Assets.xcassets */,
@@ -441,7 +441,7 @@
 			files = (
 				36BB65291FD9E04C00D121A1 /* RootViewController.swift in Sources */,
 				36BB65271FD9E04C00D121A1 /* AppDelegate.swift in Sources */,
-				36BB65451FD9E0B800D121A1 /* PresentedViewController.swift in Sources */,
+				36BB65451FD9E0B800D121A1 /* OverlayViewController.swift in Sources */,
 				36380AA8204E222100083EE9 /* PushViewController.swift in Sources */,
 				36380ABE204FA05A00083EE9 /* ModalViewController.swift in Sources */,
 				36FA97B6204B8A4100963D0E /* PeekViewController.swift in Sources */,

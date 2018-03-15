@@ -50,12 +50,35 @@
                                     <action selector="rightButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7n9-mT-Lgc"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D4h-nH-aWu">
+                                <rect key="frame" x="163.5" y="294.5" width="48" height="78"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pu-mp-AhZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="39"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Peek"/>
+                                        <connections>
+                                            <action selector="peekTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="plX-xm-OR4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdt-jA-CRS">
+                                        <rect key="frame" x="0.0" y="39" width="48" height="39"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Push"/>
+                                        <connections>
+                                            <action selector="pushTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KYP-wg-HT4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.97321699035638343" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="0bq-Fo-j2y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9a1-vA-juI"/>
+                            <constraint firstItem="D4h-nH-aWu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A15-Kc-UXh"/>
                             <constraint firstItem="xp1-XH-kQW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cuj-Dt-WVW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hZO-bf-OHs" secondAttribute="trailing" constant="16" id="fyq-fd-jpo"/>
+                            <constraint firstItem="D4h-nH-aWu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gaG-oT-xUc"/>
                             <constraint firstItem="hZO-bf-OHs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jTz-Uy-Pfe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iOJ-3T-Tql" secondAttribute="bottom" constant="20" id="pEa-cn-Cd7"/>
                             <constraint firstItem="iOJ-3T-Tql" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pFO-6s-HRd"/>

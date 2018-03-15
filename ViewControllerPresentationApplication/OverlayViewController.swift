@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import ViewControllerPresentation
 
-class PresentedViewController: UIViewController {
+class OverlayViewController: UIViewController, ViewControllerPresentable {
+    
+    
+    var customBackgroundView: UIView? {
+        return .none
+    }
+    
+    var backgroundColor: UIColor? {
+        return UIColor.black.withAlphaComponent(0.2)
+    }
     
     static let defaultWidth: CGFloat = 200
     static let defaultHeight: CGFloat = 200

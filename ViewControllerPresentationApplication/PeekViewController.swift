@@ -9,7 +9,15 @@
 import UIKit
 import ViewControllerPresentation
 
-class PeekViewController: UIViewController, ViewControllerPeekInteractiveDismissable {
+class PeekViewController: UIViewController, ViewControllerPresentable, ViewControllerPeekInteractiveDismissable {
+    
+    var customBackgroundView: UIView? {
+        return .none
+    }
+    
+    var backgroundColor: UIColor? {
+        return UIColor.black.withAlphaComponent(0.2)
+    }
     
     var interactiveTransitioning: ViewControllerPeekInteractiveDismissalController?
     

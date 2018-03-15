@@ -21,14 +21,9 @@ class RootViewController: UIViewController {
     var pushTransitionController: ViewControllerPushTransitionController = ViewControllerPushTransitionController()
     var modalTransitionController: ViewControllerModalTransitionController = ViewControllerModalTransitionController()
     
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        let recognizer: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap(_:)))
-        self.view.addGestureRecognizer(recognizer)
-    }
     
-    public func presentNewViewController(animated: Bool, completion: (() -> Void)? = nil) {
-        let vc = PresentedViewController()
+    public func presentOverlayViewController(animated: Bool, completion: (() -> Void)? = nil) {
+        let vc = OverlayViewController()
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self.transitionController
         self.present(vc, animated: animated, completion: completion)
@@ -48,17 +43,12 @@ class RootViewController: UIViewController {
         self.present(vc, animated: animated, completion: completion)
     }
     
-    public func presentModalViewController(animated: Bool, completion: (() -> ())? = nil) {
-        let vc = ModalViewController()
-        vc.modalPresentationStyle = .custom
-        vc.transitioningDelegate = self.modalTransitionController
-        self.present(vc, animated: true, completion: completion)
+    @IBAction func pushTapped(_ sender: UIButton) {
+        self.pushNewViewController(animated: true)
     }
     
-    @objc func didTap(_ sender: UITapGestureRecognizer) {
+    @IBAction func peekTapped(_ sender: UIButton) {
         self.peekNewViewController(animated: true)
-//        self.pushNewViewController(animated: true)
-//        self.presentModalViewController(animated: true)
     }
     
     public func didTapContainer() {
@@ -84,7 +74,7 @@ class RootViewController: UIViewController {
         }
         let overlay: ViewControllerOverlay = try! ViewControllerOverlay(entry: entry, exit: exit, position: position)
         self.transitionController = ViewControllerOverlayTransitionAnimationController(overlay: overlay)
-        self.presentNewViewController(animated: true)
+        self.presentOverlayViewController(animated: true)
     }
     
     @IBAction func topButtonSelected(_ sender: UIButton) {
