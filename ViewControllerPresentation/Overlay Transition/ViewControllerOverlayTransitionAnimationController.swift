@@ -12,11 +12,15 @@ public final class ViewControllerOverlayTransitionAnimationController: ViewContr
     
     // MARK: - Properties
     
-    private let overlay: ViewControllerOverlay
+    public var overlay: ViewControllerOverlay?
     
     // MARK: - Init
     
-    public init(overlay: ViewControllerOverlay) {
+    public convenience override init() {
+        self.init(overlay: .none)
+    }
+    
+    public init(overlay: ViewControllerOverlay?) {
         self.overlay = overlay
         super.init()
     }
@@ -24,19 +28,27 @@ public final class ViewControllerOverlayTransitionAnimationController: ViewContr
     // MARK: UIViewControllerTransitioningDelegate
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ViewControllerOverlayAnimator(overlay: self.overlay, isPresenting: true)
+        if let overlay: ViewControllerOverlay = self.overlay {
+            return ViewControllerOverlayAnimator(overlay: overlay, isPresenting: true)
+        } else {
+            return .none
+        }
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ViewControllerOverlayAnimator(overlay: self.overlay, isPresenting: false)
+        if let overlay: ViewControllerOverlay = self.overlay {
+            return ViewControllerOverlayAnimator(overlay: overlay, isPresenting: false)
+        } else {
+            return .none
+        }
     }
     
     public override func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        guard let presentable: UIViewController & ViewControllerPresentable = presented as? (UIViewController & ViewControllerPresentable) else {
+        guard let presentable: UIViewController & ViewControllerPresentable = presented as? (UIViewController & ViewControllerPresentable), let overlay: ViewControllerOverlay = self.overlay else {
             return .none
         }
         let result: ViewControllerOverlayTransitionPresentationController = ViewControllerOverlayTransitionPresentationController(
-            overlay: self.overlay,
+            overlay: overlay,
             presentedViewController: presentable,
             presenting: presenting
         )
