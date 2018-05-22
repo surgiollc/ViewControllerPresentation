@@ -20,8 +20,8 @@ public final class ViewControllerPeekInteractiveDismissalController: UIPercentDr
     public static let percentThreshold: CGFloat = 0.3 // The user needs to swipe down 30% to trigger a dismissal
 
     public private(set) var interactionInProgress = false
-    
-    private var shouldCompleteTransition = false
+        
+    public private(set) var shouldCompleteTransition = false
     private weak var viewController: (UIViewController & ViewControllerPeekInteractiveDismissable)!
     
     public init(viewController: UIViewController & ViewControllerPeekInteractiveDismissable) {
