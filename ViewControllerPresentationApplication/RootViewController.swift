@@ -20,6 +20,7 @@ class RootViewController: UIViewController {
     var peekTransitionController: ViewControllerPeekTransitionAnimationController = ViewControllerPeekTransitionAnimationController()
     var pushTransitionController: ViewControllerPushTransitionController = ViewControllerPushTransitionController()
     var modalTransitionController: ViewControllerModalTransitionController = ViewControllerModalTransitionController()
+    var expandTransitionController: ViewControllerExpandTransitionController = ViewControllerExpandTransitionController()
     
     
     public func presentOverlayViewController(animated: Bool, completion: (() -> Void)? = nil) {
@@ -43,12 +44,24 @@ class RootViewController: UIViewController {
         self.present(vc, animated: animated, completion: completion)
     }
     
+    public func expandNewViewController(animated: Bool, completion: (() -> ())? = nil) {
+        let vc = ExpandViewController()
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self.expandTransitionController
+        self.present(vc, animated: animated, completion: completion)
+    }
+    
     @IBAction func pushTapped(_ sender: UIButton) {
         self.pushNewViewController(animated: true)
     }
     
     @IBAction func peekTapped(_ sender: UIButton) {
         self.peekNewViewController(animated: true)
+    }
+    
+    @IBAction func expandTapped(_ sender: UIButton) {
+        self.expandTransitionController.originFrame = sender.frame
+        self.expandNewViewController(animated: true)
     }
     
     public func didTapContainer() {

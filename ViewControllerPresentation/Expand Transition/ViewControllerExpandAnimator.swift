@@ -1,32 +1,32 @@
 //
-//  ViewControllerModalAnimator.swift
+//  ViewControllerExpandAnimator.swift
 //  ViewControllerPresentation
 //
-//  Created by Chandler De Angelis on 3/6/18.
+//  Created by Chandler De Angelis on 7/17/18.
 //  Copyright © 2018 Chandlerdea. All rights reserved.
 //
 
 import Foundation
 
-final class ViewControllerModalAnimator: NSObject {
+final class ViewControllerExpandAnimator: NSObject {
     
     // MARK: - Properties
     
     private let isPresenting: Bool
+    private let originFrame: CGRect
     
     // MARK: - Init
     
-    public init(isPresenting: Bool) {
+    public init(isPresenting: Bool, originFrame: CGRect) {
         self.isPresenting = isPresenting
-        super.init()
+        self.originFrame = originFrame
     }
 }
-
 // MARK: - UIViewControllerAnimatedTransitioning
-extension ViewControllerModalAnimator: UIViewControllerAnimatedTransitioning {
+extension ViewControllerExpandAnimator: UIViewControllerAnimatedTransitioning {
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 3
     }
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -41,20 +41,9 @@ extension ViewControllerModalAnimator: UIViewControllerAnimatedTransitioning {
         let animationDuration: TimeInterval = transitionDuration(using: transitionContext)
         var finalFrame: CGRect = transitionContext.finalFrame(for: viewController)
         if self.isPresenting {
-            let fromViewController: UIViewController = transitionContext.viewController(forKey: .from)!
-            viewController.view.frame = CGRect(
-                x: 0,
-                y: fromViewController.view.bounds.height,
-                width: finalFrame.size.width,
-                height: finalFrame.size.height
-            )
+            viewController.view.frame = self.originFrame
         } else {
-            finalFrame = CGRect(
-                x: 0,
-                y: viewController.view.bounds.height,
-                width: finalFrame.size.width,
-                height: finalFrame.size.height
-            )
+            finalFrame = self.originFrame
         }
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             viewController.view.frame = finalFrame

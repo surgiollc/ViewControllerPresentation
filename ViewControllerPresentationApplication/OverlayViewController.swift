@@ -11,7 +11,6 @@ import ViewControllerPresentation
 
 class OverlayViewController: UIViewController, ViewControllerPresentable {
     
-    
     var customBackgroundView: UIView? {
         return .none
     }
