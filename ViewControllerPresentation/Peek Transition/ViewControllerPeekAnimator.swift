@@ -14,7 +14,7 @@ final class ViewControllerPeekAnimator: NSObject {
     
     private static let viewsCornerRadius: CGFloat = 8
     private let isPresenting: Bool
-    internal let interactiveDismissalController: ViewControllerPeekInteractiveDismissalController?
+    internal let interactiveDismissalController: ViewControllerModalInteractiveDismissalController?
     
     // MARK: - Init
     
@@ -22,7 +22,7 @@ final class ViewControllerPeekAnimator: NSObject {
         self.init(isPresenting: isPresenting, interactiveDismissalController: .none)
     }
     
-    public init(isPresenting: Bool, interactiveDismissalController: ViewControllerPeekInteractiveDismissalController?) {
+    public init(isPresenting: Bool, interactiveDismissalController: ViewControllerModalInteractiveDismissalController?) {
         self.isPresenting = isPresenting
         self.interactiveDismissalController = interactiveDismissalController
         super.init()

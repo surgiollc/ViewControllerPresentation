@@ -13,11 +13,17 @@ final class ViewControllerModalAnimator: NSObject {
     // MARK: - Properties
     
     private let isPresenting: Bool
+    internal let interactiveDismissalController: ViewControllerModalInteractiveDismissalController?
     
     // MARK: - Init
     
-    public init(isPresenting: Bool) {
+    public convenience init(isPresenting: Bool) {
+        self.init(isPresenting: isPresenting, interactiveDismissalController: .none)
+    }
+    
+    public init(isPresenting: Bool, interactiveDismissalController: ViewControllerModalInteractiveDismissalController?) {
         self.isPresenting = isPresenting
+        self.interactiveDismissalController = interactiveDismissalController
         super.init()
     }
 }
@@ -61,5 +67,16 @@ extension ViewControllerModalAnimator: UIViewControllerAnimatedTransitioning {
         }) { finished in
             transitionContext.completeTransition(finished && !transitionContext.transitionWasCancelled)
         }
+    }
+}
+// MARK: - UIViewControllerInteractiveTransitioning
+extension ViewControllerModalAnimator: UIViewControllerInteractiveTransitioning {
+    
+    var wantsInteractiveStart: Bool {
+        return true
+    }
+    
+    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        self.animateTransition(using: transitionContext)
     }
 }

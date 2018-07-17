@@ -1,30 +1,30 @@
 //
-//  ViewControllerPeekInteractiveDismissalController.swift
+//  ViewControllerModalInteractiveDismissalController.swift
 //  ViewControllerPresentation
 //
-//  Created by Chandler De Angelis on 3/3/18.
+//  Created by Chandler De Angelis on 7/17/18.
 //  Copyright © 2018 Chandlerdea. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-public protocol ViewControllerPeekInteractiveDismissable {
+public protocol ViewControllerModalInteractiveDismissable {
     
-    var interactiveTransitioning: ViewControllerPeekInteractiveDismissalController? { get }
+    var interactiveTransitioning: ViewControllerModalInteractiveDismissalController? { get }
     func swipeDidBegin()
     func swipeDidEnd()
 }
 
-public final class ViewControllerPeekInteractiveDismissalController: UIPercentDrivenInteractiveTransition {
-
-    public static let percentThreshold: CGFloat = 0.3 // The user needs to swipe down 30% to trigger a dismissal
-
-    public private(set) var interactionInProgress = false
-        
-    public private(set) var shouldCompleteTransition = false
-    private weak var viewController: (UIViewController & ViewControllerPeekInteractiveDismissable)!
+public final class ViewControllerModalInteractiveDismissalController: UIPercentDrivenInteractiveTransition {
     
-    public init(viewController: UIViewController & ViewControllerPeekInteractiveDismissable) {
+    public static let percentThreshold: CGFloat = 0.3 // The user needs to swipe down 30% to trigger a dismissal
+    
+    public private(set) var interactionInProgress = false
+    
+    public private(set) var shouldCompleteTransition = false
+    private weak var viewController: (UIViewController & ViewControllerModalInteractiveDismissable)!
+    
+    public init(viewController: UIViewController & ViewControllerModalInteractiveDismissable) {
         super.init()
         self.viewController = viewController
         self.prepareGestureRecognizer(in: self.viewController.view)
@@ -32,22 +32,22 @@ public final class ViewControllerPeekInteractiveDismissalController: UIPercentDr
     
     private func prepareGestureRecognizer(in view: UIView) {
         let recognizer: UIGestureRecognizer = UIPanGestureRecognizer(
-                                                  target: self,
-                                                  action: #selector(self.handleGesture(_:))
-                                              )
+            target: self,
+            action: #selector(self.handleGesture(_:))
+        )
         view.addGestureRecognizer(recognizer)
     }
     
     @objc func handleGesture(_ recognizer: UIPanGestureRecognizer) {
         
-        let percentThreshold: CGFloat = ViewControllerPeekInteractiveDismissalController.percentThreshold
+        let percentThreshold: CGFloat = ViewControllerModalInteractiveDismissalController.percentThreshold
         let translation: CGPoint = recognizer.translation(in: self.viewController.view)
         let verticalMovement: CGFloat = translation.y / self.viewController.view.bounds.height
         let downwardMovement: Float = fmaxf(Float(verticalMovement), 0.0)
         let downwardMovementPercent: Float = fminf(downwardMovement, 1.0)
         let progress: CGFloat = CGFloat(downwardMovementPercent)
-                
-        guard let viewController: UIViewController & ViewControllerPeekInteractiveDismissable = self.viewController else { return }
+        
+        guard let viewController: UIViewController & ViewControllerModalInteractiveDismissable = self.viewController else { return }
         
         switch recognizer.state {
         case .began:

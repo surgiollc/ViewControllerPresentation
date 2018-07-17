@@ -17,6 +17,7 @@
 		3646BBCF20FE666F0098F049 /* ViewControllerExpandTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646BBCE20FE666F0098F049 /* ViewControllerExpandTransitionController.swift */; };
 		3646BBD120FE66C00098F049 /* ViewControllerExpandAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646BBD020FE66C00098F049 /* ViewControllerExpandAnimator.swift */; };
 		3646BBD320FE6BB50098F049 /* ExpandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646BBD220FE6BB50098F049 /* ExpandViewController.swift */; };
+		3646BC1920FE92AA0098F049 /* ViewControllerModalInteractiveDismissalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646BC1820FE92AA0098F049 /* ViewControllerModalInteractiveDismissalController.swift */; };
 		3646E49B1FDA0FBC0013AD55 /* ViewControllerOverlayTransitionAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646E49A1FDA0FBC0013AD55 /* ViewControllerOverlayTransitionAnimationController.swift */; };
 		3646E49D1FDA0FCF0013AD55 /* ViewControllerOverlayTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646E49C1FDA0FCF0013AD55 /* ViewControllerOverlayTransitionPresentationController.swift */; };
 		3646E4A11FDA135C0013AD55 /* ViewControllerOverlayPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646E4A01FDA135C0013AD55 /* ViewControllerOverlayPresentationTests.swift */; };
@@ -44,7 +45,6 @@
 		36FA97B4204B85C400963D0E /* ViewControllerPeekAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FA97B3204B85C400963D0E /* ViewControllerPeekAnimator.swift */; };
 		36FA97B6204B8A4100963D0E /* PeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FA97B5204B8A4100963D0E /* PeekViewController.swift */; };
 		36FA97B8204B8B9C00963D0E /* ViewControllerPeekTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FA97B7204B8B9C00963D0E /* ViewControllerPeekTransitionPresentationController.swift */; };
-		36FA97E0204BB50D00963D0E /* ViewControllerPeekInteractiveDismissalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FA97DF204BB50D00963D0E /* ViewControllerPeekInteractiveDismissalController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +89,7 @@
 		3646BBCE20FE666F0098F049 /* ViewControllerExpandTransitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExpandTransitionController.swift; sourceTree = "<group>"; };
 		3646BBD020FE66C00098F049 /* ViewControllerExpandAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExpandAnimator.swift; sourceTree = "<group>"; };
 		3646BBD220FE6BB50098F049 /* ExpandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandViewController.swift; sourceTree = "<group>"; };
+		3646BC1820FE92AA0098F049 /* ViewControllerModalInteractiveDismissalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerModalInteractiveDismissalController.swift; sourceTree = "<group>"; };
 		3646E49A1FDA0FBC0013AD55 /* ViewControllerOverlayTransitionAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOverlayTransitionAnimationController.swift; sourceTree = "<group>"; };
 		3646E49C1FDA0FCF0013AD55 /* ViewControllerOverlayTransitionPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOverlayTransitionPresentationController.swift; sourceTree = "<group>"; };
 		3646E4A01FDA135C0013AD55 /* ViewControllerOverlayPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOverlayPresentationTests.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		36FA97B3204B85C400963D0E /* ViewControllerPeekAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPeekAnimator.swift; sourceTree = "<group>"; };
 		36FA97B5204B8A4100963D0E /* PeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeekViewController.swift; sourceTree = "<group>"; };
 		36FA97B7204B8B9C00963D0E /* ViewControllerPeekTransitionPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPeekTransitionPresentationController.swift; sourceTree = "<group>"; };
-		36FA97DF204BB50D00963D0E /* ViewControllerPeekInteractiveDismissalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPeekInteractiveDismissalController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +164,7 @@
 			children = (
 				36380AB9204F99CD00083EE9 /* ViewControllerModalTransitionController.swift */,
 				36380ABB204F99E400083EE9 /* ViewControllerModalAnimator.swift */,
+				3646BC1820FE92AA0098F049 /* ViewControllerModalInteractiveDismissalController.swift */,
 			);
 			path = "Modal Transition";
 			sourceTree = "<group>";
@@ -271,7 +272,6 @@
 				36FA97AC204B7FC300963D0E /* ViewControllerPeekTransitionAnimationController.swift */,
 				36FA97B7204B8B9C00963D0E /* ViewControllerPeekTransitionPresentationController.swift */,
 				36FA97B3204B85C400963D0E /* ViewControllerPeekAnimator.swift */,
-				36FA97DF204BB50D00963D0E /* ViewControllerPeekInteractiveDismissalController.swift */,
 			);
 			path = "Peek Transition";
 			sourceTree = "<group>";
@@ -432,7 +432,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36FA97E0204BB50D00963D0E /* ViewControllerPeekInteractiveDismissalController.swift in Sources */,
 				365BF2A11FDA0F3C0083FBBB /* ViewControllerTransitionPresentationDelegate.swift in Sources */,
 				36380AA6204E1F8800083EE9 /* ViewControllerPushAnimator.swift in Sources */,
 				36380ABA204F99CD00083EE9 /* ViewControllerModalTransitionController.swift in Sources */,
@@ -445,6 +444,7 @@
 				3646E49D1FDA0FCF0013AD55 /* ViewControllerOverlayTransitionPresentationController.swift in Sources */,
 				36380AAA204E257F00083EE9 /* ViewControllerPushInteractiveDismissalControllerr.swift in Sources */,
 				3646E49B1FDA0FBC0013AD55 /* ViewControllerOverlayTransitionAnimationController.swift in Sources */,
+				3646BC1920FE92AA0098F049 /* ViewControllerModalInteractiveDismissalController.swift in Sources */,
 				368368E01FDA23AF007EF38E /* ViewControllerOverlayAnimator.swift in Sources */,
 				3646BBD120FE66C00098F049 /* ViewControllerExpandAnimator.swift in Sources */,
 				36FA97AD204B7FC300963D0E /* ViewControllerPeekTransitionAnimationController.swift in Sources */,

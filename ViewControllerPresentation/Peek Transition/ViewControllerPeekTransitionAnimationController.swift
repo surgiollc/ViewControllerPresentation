@@ -17,7 +17,7 @@ public final class ViewControllerPeekTransitionAnimationController: ViewControll
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if let interactiveDismissal: ViewControllerPeekInteractiveDismissable = dismissed as? ViewControllerPeekInteractiveDismissable {
+        if let interactiveDismissal: ViewControllerModalInteractiveDismissable = dismissed as? ViewControllerModalInteractiveDismissable {
             return ViewControllerPeekAnimator(
                 isPresenting: false,
                 interactiveDismissalController: interactiveDismissal.interactiveTransitioning
@@ -39,7 +39,7 @@ public final class ViewControllerPeekTransitionAnimationController: ViewControll
     
     public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         if let peekAnimator: ViewControllerPeekAnimator = animator as? ViewControllerPeekAnimator,
-            let interactiveDismissale: ViewControllerPeekInteractiveDismissalController = peekAnimator.interactiveDismissalController,
+            let interactiveDismissale: ViewControllerModalInteractiveDismissalController = peekAnimator.interactiveDismissalController,
             interactiveDismissale.interactionInProgress {
             return interactiveDismissale
         } else {
